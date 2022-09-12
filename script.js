@@ -96,6 +96,7 @@ function saveCardProducts() {
 }
 
 function reBuildCardTemp() {
+    // Ahmed Magdy
     // loop on cardsProducts.
     // but it on innerHTML on cardTemp.
     // Re Calcolate Total.
@@ -104,10 +105,12 @@ function reBuildCardTemp() {
 }
 
 function reCalcolateTotal() {
+    // Mohamed Ali
     // loop card products and add price to total var * count
 }
 
 function deleteFromCard(prID) {
+    // Mohamed Ali
     // delete from list.
     for (let i = 0; i < cardProducts.length; i++) {
         // find the product and splice it.
@@ -118,6 +121,7 @@ function deleteFromCard(prID) {
 }
 
 function increaseCount(prID) {
+    // abo Zeaid tyyyyyyiz
     for (let i = 0; i < cardProducts.length; i++) {
         // find the product and add 1 to count.
     }
@@ -126,6 +130,7 @@ function increaseCount(prID) {
 }
 
 function decreaseCount(prID) {
+    // abo Zeaid tyyyyyyiz 
     // delete one from count to product .
     // if count < 1 delete the product .
     saveCardProducts();
