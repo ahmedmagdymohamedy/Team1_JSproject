@@ -82,7 +82,13 @@ function getProductById(prID) {
 }
 
 function addToCard(prID) {
-    // check if the product is already on cardsProducts or no -->> increaseCount() not add product 
+    // check if the product is already on cardsProducts or no -->> increaseCount() not add product
+    for (let i = 0; i < cardProducts.length; i++) {
+        if (cardProducts[i].id == prID) {
+            increaseCount(prID);
+            return;
+        }
+    }
 
     var product = getProductById(prID);
     product.count = 1;
@@ -110,7 +116,7 @@ function reBuildCardTemp() {
             <div class="col-md-8">
                 <div class="card-body">
                 <div class="row">
-                <h5 class="col card-title">Card title</h5>
+                <h5 class="col card-title">${cardProducts[i].name}</h5>
                 <button onclick="deleteFromCard(${cardProducts[i].id})" class="col-2">X</button>
             </div>
                     <div class="row">
