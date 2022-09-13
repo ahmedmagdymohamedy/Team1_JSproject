@@ -69,10 +69,11 @@ function reGetCard() {
     if (cardResult != null) {
         cardProducts = cardResult;
     }
+    reBuildCardTemp();
 }
 
 function getProductById(prID) {
-    // find the product whose have the same id
+    // findd the product whose have the same id
     for (let i = 0; i < products.length; i++) {
         if (products[i].id === prID) {
             return products[i];
@@ -81,7 +82,7 @@ function getProductById(prID) {
 }
 
 function addToCard(prID) {
-    // check if the product is already on cardsProducts or no -->> increaseCount() not add product
+    // check if the product is already on cardsProducts or no -->> increaseCount() not add product 
 
     var product = getProductById(prID);
     product.count = 1;
@@ -96,32 +97,64 @@ function saveCardProducts() {
 }
 
 function reBuildCardTemp() {
-    // Ahmed Magdy
+    // Ahmed Magdy task (done)
     // loop on cardsProducts.
+    var innerhtml = '';
+    for (let i = 0; i < cardProducts.length; i++) {
+        innerhtml += `
+        <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${cardProducts[i].src}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <div class="row">
+                <h5 class="col card-title">Card title</h5>
+                <button onclick="deleteFromCard(${cardProducts[i].id})" class="col-2">X</button>
+            </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <span>count :</span>
+                            <button onclick="decreaseCount(${cardProducts[i].id})">-</button>
+                            <span>${cardProducts[i].count}</span>
+                            <button onclick="increaseCount(${cardProducts[i].id})">+</button>
+                        </div>
+                        <div class="col-4">
+                        ${cardProducts[i].price}$
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        `;
+    }
     // but it on innerHTML on cardTemp.
+    cardsTemp.innerHTML = innerhtml;
     // Re Calcolate Total.
     reCalcolateTotal();
     // ...
 }
 
 function reCalcolateTotal() {
-    // Mohamed Ali
+    // Mohamed Ali task
     // loop card products and add price to total var * count
 }
 
 function deleteFromCard(prID) {
-    // Mohamed Ali
+    // Mohamed Ali task
     // delete from list.
     for (let i = 0; i < cardProducts.length; i++) {
         // find the product and splice it.
     }
-    // delete from localStorage (Done).
+    // delete from localStorage
     saveCardProducts();
     reBuildCardTemp();
 }
 
 function increaseCount(prID) {
-    // abo Zeaid tyyyyyyiz
+    // abo Zeaid tyyyyyyiz task
     for (let i = 0; i < cardProducts.length; i++) {
         // find the product and add 1 to count.
     }
@@ -130,7 +163,7 @@ function increaseCount(prID) {
 }
 
 function decreaseCount(prID) {
-    // abo Zeaid tyyyyyyiz 
+    // abo Zeaid tyyyyyyiz task
     // delete one from count to product .
     // if count < 1 delete the product .
     saveCardProducts();
