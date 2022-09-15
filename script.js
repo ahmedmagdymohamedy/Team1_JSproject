@@ -2,11 +2,11 @@
 
 var productsTemp = document.getElementById("products");
 var cardsTemp = document.getElementById("cards");
-var totalProducts = document.getElementById ("total");
+var totalProducts = document.getElementById("total");
 
 
-//JSON File For Products
-const products = [
+//JSON Products
+var products = [
     {
         id: 0,
         name: "Anker Soundcore ",
@@ -65,11 +65,11 @@ const products = [
     }
 ];
 
-
 var cardProducts = [];
 
 
 function onloadPage() {
+    // set the products cards to html body
     var innerhtml = '';
     for (let i = 0; i < products.length; i++) {
         innerhtml += `
@@ -90,8 +90,9 @@ function onloadPage() {
 }
 
 function reGetCard() {
-    // set initial card products values
+    // set initial card products values from local storage -- if user used our web side befor .
     var cardResult = JSON.parse(localStorage.getItem("cardProducts"));
+    //check if user not have local storage data -- that is mean the user is first time to open our web side .
     if (cardResult != null) {
         cardProducts = cardResult;
     }
@@ -99,7 +100,7 @@ function reGetCard() {
 }
 
 function getProductById(prID) {
-    // find the product whose have the same id
+    // find the product whose have the same id and return it .
     for (let i = 0; i < products.length; i++) {
         if (products[i].id === prID) {
             return products[i];
@@ -108,7 +109,7 @@ function getProductById(prID) {
 }
 
 function addToCard(prID) {
-    // check if the product is already on cardsProducts or no -->> increaseCount() not add product
+    // check if the product is already on cardsProducts and if not found -->> increaseCount() not add product
     for (let i = 0; i < cardProducts.length; i++) {
         if (cardProducts[i].id == prID) {
             increaseCount(prID);
@@ -125,14 +126,15 @@ function addToCard(prID) {
 }
 
 function saveCardProducts() {
+    // re save cardsProducts to local storage after any changes.
     localStorage.setItem("cardProducts", JSON.stringify(cardProducts));
 }
 
 function reBuildCardTemp() {
     // Ahmed Magdy task (done)
-    // loop on cardsProducts.
+    // loop on cardsProducts and add it to html on card templet.
     var innerhtml = '';
-    for (let i = 0; i < cardProducts.length; i++) {
+    for (var i = 0; i < cardProducts.length; i++) {
         innerhtml += `
         <div class="card mb-3 bg-dark text-light border-light" style="max-width: 540px;">
         <div class="row g-0">
@@ -142,7 +144,7 @@ function reBuildCardTemp() {
             <div class="col-md-9">
                 <div class="card-body">
                 <div class="row">
-                <h5 class="col card-title">${cardProducts[i].name}</h5>
+                <h5 class="col card-title"> ${cardProducts[i].name}</h5>
                 <button  type="button" onclick="deleteFromCard(${cardProducts[i].id})" class="btn-close btn-close-white col-2" aria-label="Close"></button>
             </div>
             <div class="row ">
@@ -150,7 +152,7 @@ function reBuildCardTemp() {
                 <span ">count : ${cardProducts[i].count} </span>
                 
             </div>
-                <div class="col-12">Price:${cardProducts[i].price} L.E
+                <div class="col-12">Price : ${cardProducts[i].price * cardProducts[i].count} L.E
                 </div>
                 <div class="row">
                 <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="decreaseCount(${cardProducts[i].id})">-</button>
@@ -176,25 +178,24 @@ function reCalculateTotal() {
     // loop card products and add price to total var * count
     var total = 0;
     for (var i = 0; i < cardProducts.length; i++) {
-        total += cardProducts[i].price;
+        total += cardProducts[i].price * cardProducts[i].count;
     }
-    totalProducts.innerHTML = total+" L.E";
+    // set the total value to html
+    totalProducts.innerHTML = total + " L.E";
 }
 
 
 
 
 function deleteFromCard(prID) {
-    // Mohamed Ali task
-    // delete from list.
-    for (let index = 0; index < cardProducts.length; index++) {
-        if(cardProducts[index]["id"] == prID){
-            cardProducts.splice(index,1);
+    // Mohamed Ali task (done)
+    // delete item from card products.
+    for (let i = 0; i < cardProducts.length; i++) {
+        if (cardProducts[i]["id"] == prID) {
+            cardProducts.splice(i, 1);
+            break;
         }
-        
     }
-
-localStorage.cardProducts = JSON.stringify(cardProducts);
     // delete from localStorage
     saveCardProducts();
     reBuildCardTemp();
@@ -202,25 +203,43 @@ localStorage.cardProducts = JSON.stringify(cardProducts);
 
 
 function deleteAllProducts() {
-localStorage.clear();
-location.reload();
+    // Mohamed Aly task (done)
+    // delete all items from card products .
+    localStorage.removeItem('cardProducts')
+    cardProducts = [];
+    reBuildCardTemp();
 }
 
 
 
 function increaseCount(prID) {
-    // abo Zeaid tyyyyyyiz task
+    //  Ahmed Mohamed Abo Zeid task (done)
+    // add count 1 to product count
     for (let i = 0; i < cardProducts.length; i++) {
         // find the product and add 1 to count.
+        if (cardProducts[i]["id"] == prID) {
+            cardProducts[i].count++;
+            break;
+        }
     }
-    saveCardProducts();
+
     reBuildCardTemp();
 }
 
 function decreaseCount(prID) {
-    // abo Zeaid tyyyyyyiz task
-    // delete one from count to product .
-    // if count < 1 delete the product .
+    //  Ahmed Mohamed Abo Zeid task (done)
+    // decrease count 1 from product count
+
+    for (let i = 0; i < cardProducts.length; i++) {
+        if (cardProducts[i]["id"] == prID) {
+            cardProducts[i].count--;
+            // check if count >= 0  -- delet it from card product
+            if (cardProducts[i].count <= 0) {
+                deleteFromCard(prID);
+            }
+            break;
+        }
+    }
     saveCardProducts();
     reBuildCardTemp();
 }
