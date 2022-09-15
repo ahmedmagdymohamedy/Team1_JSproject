@@ -204,10 +204,18 @@ function deleteFromCard(prID) {
 
 function deleteAllProducts() {
     // Mohamed Aly task (done)
+    // check if have cards items or no .
+    if (cardProducts.length == 0) {
+        return;
+    }
     // delete all items from card products .
-    localStorage.removeItem('cardProducts')
-    cardProducts = [];
-    reBuildCardTemp();
+
+    if (confirm("Are you sure you want to delete you carts ?")) {
+
+        localStorage.removeItem('cardProducts')
+        cardProducts = [];
+        reBuildCardTemp();
+    }
 }
 
 

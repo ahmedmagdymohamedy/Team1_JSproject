@@ -12,43 +12,57 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
-<body onload="onloadPage()">
+<body class="bg-dark" onload="onloadPage()">
 
     <!-- Header Start -->
-<div class="row">
-    <div class="header bg-warning text-dark p-3 display-6 text-center mb-4 ">Product Mangement System</div>
-</div>
+    <header class="bg-warning text-dark p-3 display-6 text-center  "> Product
+        Mangement System</header>
     <!-- Header End -->
 
+    <!-- Categorys Header  -->
+    <div class="bg-light text-dark opacity-25 row mb-4 p-3 display-6">
+
+        <div class="col-7 text-center">
+            <span><i class='bx bx-store'></i></span> Products
+        </div>
+        <div class="col-5 text-center">
+            <span><i class='bx bx-shopping-bag'></i></span> Cards
+        </div>
+    </div>
+
     <!-- Products And Car Start -->
-<div class="container">
-    <div class="row">
-        <!-- Products -->
-        <div id="products" class="col-9 row">
+    <div class="container">
+        <div class="row">
+            <!-- Products -->
+            <div id="products" class="col-9 row">
+            </div>
+            <!-- Cash Car -->
+            <div id="cards" class="col-3">
+            </div>
         </div>
-        <!-- Cash Car -->
-        <div id="cards" class="col-3">
-        </div>
+
+
+
+
+
     </div>
-
-
-
-
-
-</div>
     <!-- Products And Car End -->
-    
-        <!-- Total -->
-        <div class="row flex-center-all">
-        <div class="bg-warning w-100 display-6 mt-3"  >Total</div>
-        <div class="bg-dark text-light display-5" id="total"></div>
+
+    <!-- Total -->
+    <div class="row flex-center-all">
+        <div class="bg-warning w-100 display-6 mt-3 p-2">Total</div>
+        <div class=" text-light display-5  p-2" id="total"></div>
     </div>
 
-    <button onclick="deleteAllProducts()">Delete All</button>
+    <div class="flex-center-all ">
+
+        <button class="btn btn-danger delete-btn " onclick="deleteAllProducts()">Delete All Items</button>
+    </div>
     </div>
     <script src="script.js"></script>
 </body>

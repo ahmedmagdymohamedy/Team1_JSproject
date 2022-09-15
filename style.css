@@ -1,11 +1,10 @@
 body {
-  /* margin: 0;
-  padding: 0; */
   box-sizing: border-box;
   max-width: 100%;
   overflow-x: hidden;
-  background: #222;
 }
+
+
 
 .flex-center-all {
   display: flex;
@@ -16,4 +15,11 @@ body {
 
 p {
   font-size: 12px;
+}
+
+
+
+.delete-btn {
+  font-size: 34px;
+  margin-bottom: 80px;
 }
