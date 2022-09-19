@@ -4,8 +4,6 @@ body {
   overflow-x: hidden;
 }
 
-
-
 .flex-center-all {
   display: flex;
   justify-content: center;
@@ -16,8 +14,6 @@ body {
 p {
   font-size: 12px;
 }
-
-
 
 .delete-btn {
   font-size: 34px;
