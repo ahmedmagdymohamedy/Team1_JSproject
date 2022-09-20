@@ -5,85 +5,33 @@ var cardsTemp = document.querySelector("#cards");
 var totalProducts = document.querySelector("#total");
 
 // Products
-var products = [
-  {
-    id: 0,
-    name: "Anker Soundcore ",
-    description:
-      "Gaming Headset, Stereo Sound , Sound Enhancement for FPS Games, Noise Isolating Mic",
-    price: 600,
-    src: "imgs/1.jpg",
-  },
-  {
-    id: 1,
-    name: "Bluetooth Speaker",
-    description:
-      "Portable Wireless Bluetooth Speakers, Touch Control Bedside Table Light,Outdoor Speakers Bluetooth",
-    price: 117,
-    src: "imgs/2.jpg",
-  },
-  {
-    id: 2,
-    name: "REDRAGON K611",
-    description:
-      "BES Gaming Mechanical TKL Keyboard - White Backlighting and Side RGB Light - Blue Switch - AR/EN key ",
-    price: 999,
-    src: "imgs/3.jpg",
-  },
-  {
-    id: 3,
-    name: "TL-WA850RE",
-    description:
-      "Signal Rate: 11n: Up to 300Mbps dynamic, Good Quality with a high end, TP-Link TL-WA850RE Wi-Fi Range Extender",
-    price: 275,
-    src: "imgs/4.jpg",
-  },
-  {
-    id: 4,
-    name: "Meetion GM015",
-    description:
-      "Lightweight Honeycomb RGB Gaming Mouse (6400 DPI) – For PC & Laptop – Black",
-    price: 170,
-    src: "imgs/5.jpg",
-  },
-  {
-    id: 5,
-    name: "Computer Stand",
-    description:
-      "Choetech Foldable Computer Stand,Choetech Foldable Computer Stand",
-    price: 230,
-    src: "imgs/6.jpg",
-  },
-  {
-    id: 6,
-    name: "Mini PC",
-    description:
-      "Windows 11 Pro Intel 4-Core J4125 128G M.2 SSD TRIGKEY N4 Working Micro PC Computer",
-    price: 6000,
-    src: "imgs/7.jpg",
-  },
-  {
-    id: 7,
-    name: "HP Smart Tank 516 ",
-    description:
-      "High-Volume, Low-Cost Printing And Innovation Design- Get Up To 18,000 ",
-    price: 3000,
-    src: "imgs/8.jpg",
-  },
-];
-
+var products = [];
+//current products will showen on page
+var currentProducts = [];
 //Cart Products
 var cardProducts = [];
 
 function onloadPage() {
+
+  fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=15')
+    .then(res => res.json())
+    .then(json => {
+      products = json;
+      currentProducts = products;
+      reBuildProductTemp()
+    });
+}
+
+
+function reBuildProductTemp() {
   // set the products cards to html body
   var innerhtml = "";
   for (let i = 0; i < products.length; i++) {
     innerhtml += `
         <div class="card col-4 bg-dark text-light border border-light flex-center-all m-1" style="width: 12rem; ">
-        <img src="${products[i].src}" class="card-img-top" alt="product">
+        <img src="${products[i].images[0]}" class="card-img-top" alt="product">
         <div class="card-body">
-            <h6 class="card-title text-warning ">${products[i].name}</h6>
+            <h6 class="card-title text-warning ">${products[i].title}</h6>
             <p class="card-text">${products[i].description}</p>
                 <h6 class="card-text">Price : ${products[i].price} L.E</h6>
             <a class="btn btn-warning" onclick="addToCard(${products[i].id})" >Add To Cart</a>
@@ -92,7 +40,6 @@ function onloadPage() {
         `;
   }
   productsTemp.innerHTML = innerhtml;
-
   reGetCard();
 }
 
@@ -115,34 +62,29 @@ function reBuildCardTemp() {
         <div class="card mb-3 bg-dark text-light border-light" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-3">
-                <img src="${
-                  cardProducts[i].src
-                }" class="img-fluid rounded-start" alt="...">
+                <img src="${cardProducts[i].images[0]
+      }" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-9">
                 <div class="card-body">
                 <div class="row">
-                <h5 class="col card-title"> ${cardProducts[i].name}</h5>
-                <button  type="button" onclick="deleteFromCard(${
-                  cardProducts[i].id
-                })" class="btn-close btn-close-white col-2" aria-label="Close"></button>
+                <h5 class="col card-title"> ${cardProducts[i].title}</h5>
+                <button  type="button" onclick="deleteFromCard(${cardProducts[i].id
+      })" class="btn-close btn-close-white col-2" aria-label="Close"></button>
             </div>
             <div class="row ">
             <div class="col-8">
                 <span ">count : ${cardProducts[i].count} </span>
                 
             </div>
-                <div class="col-12">Price : ${
-                  cardProducts[i].price * cardProducts[i].count
-                } L.E
+                <div class="col-12">Price : ${cardProducts[i].price * cardProducts[i].count
+      } L.E
                 </div>
                 <div class="row">
-                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="decreaseCount(${
-                  cardProducts[i].id
-                })">-</button>
-                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="increaseCount(${
-                  cardProducts[i].id
-                })">+</button>
+                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="decreaseCount(${cardProducts[i].id
+      })">-</button>
+                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="increaseCount(${cardProducts[i].id
+      })">+</button>
                 </div>
                 </div>
                 </div>
@@ -259,4 +201,11 @@ function decreaseCount(prID) {
   }
   saveCardProducts();
   reBuildCardTemp();
+}
+
+
+function onChangeSearchKeyWord(element) {
+  element.value
+  console.log(aaaa);
+  console.log(element.value);
 }
