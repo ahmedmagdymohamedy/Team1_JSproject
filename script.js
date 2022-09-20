@@ -26,15 +26,15 @@ function onloadPage() {
 function reBuildProductTemp() {
   // set the products cards to html body
   var innerhtml = "";
-  for (let i = 0; i < products.length; i++) {
+  for (let i = 0; i < currentProducts.length; i++) {
     innerhtml += `
         <div class="card col-4 bg-dark text-light border border-light flex-center-all m-1" style="width: 12rem; ">
-        <img src="${products[i].images[0]}" class="card-img-top" alt="product">
+        <img src="${currentProducts[i].images[0]}" class="card-img-top" alt="product">
         <div class="card-body">
-            <h6 class="card-title text-warning ">${products[i].title}</h6>
-            <p class="card-text">${products[i].description}</p>
-                <h6 class="card-text">Price : ${products[i].price} L.E</h6>
-            <a class="btn btn-warning" onclick="addToCard(${products[i].id})" >Add To Cart</a>
+            <h6 class="card-title text-warning ">${currentProducts[i].title}</h6>
+            <p class="card-text">${currentProducts[i].description}</p>
+                <h6 class="card-text">Price : ${currentProducts[i].price} L.E</h6>
+            <a class="btn btn-warning" onclick="addToCard(${currentProducts[i].id})" >Add To Cart</a>
         </div>
         </div>
         `;
@@ -204,8 +204,12 @@ function decreaseCount(prID) {
 }
 
 
-function onChangeSearchKeyWord(element) {
-  element.value
-  console.log(aaaa);
-  console.log(element.value);
+function onChangeSearchKeyWord(newKeyWord) {
+  currentProducts = products.filter(e => e["title"].toUpperCase().includes(newKeyWord.value.toUpperCase()));
+  reBuildProductTemp();
 }
+
+
+// setTimeout(() => {
+//   onChangeSearchKeyWord("Ergo");
+// }, 3000)
