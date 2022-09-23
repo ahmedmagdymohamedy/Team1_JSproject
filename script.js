@@ -13,7 +13,7 @@ var cardProducts = [];
 
 function onloadPage() {
 
-  fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=15')
+  fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=30')
     .then(res => res.json())
     .then(json => {
       products = json;
