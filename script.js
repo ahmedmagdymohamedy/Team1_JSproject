@@ -12,26 +12,26 @@ var currentProducts = [];
 var cardProducts = [];
 
 function onloadPage() {
-
-  fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=30')
-    .then(res => res.json())
-    .then(json => {
-      products = json;
+  //Ahmed magdy (Done)
+  fetch("https://dummyjson.com/products")
+    .then((res) => res.json())
+    .then((json) => {
+      products = json.products;
+      console.log(json.products);
       currentProducts = products;
-      reBuildProductTemp()
+      reBuildProductTemp();
     });
 }
-
 
 function reBuildProductTemp() {
   // set the products cards to html body
   var innerhtml = "";
   for (let i = 0; i < currentProducts.length; i++) {
     innerhtml += `
-        <div class="card col-4 bg-dark text-light border border-light flex-center-all m-1" style="width: 12rem; ">
-        <img src="${currentProducts[i].images[0]}" class="card-img-top" alt="product">
+        <div class="card col-4 bg-dark text-light border border-light flex-center-all m-1" style="width: 12rem;>
+        <img src="${currentProducts[i].images[0]}" class="card-img-top" alt="product" >
         <div class="card-body">
-            <h6 class="card-title text-warning ">${currentProducts[i].title}</h6>
+            <h6 class="card-title text-warning pointer" onclick="openProduct(${currentProducts[i].id})">${currentProducts[i].title}</h6>
             <p class="card-text">${currentProducts[i].description}</p>
                 <h6 class="card-text">Price : ${currentProducts[i].price} L.E</h6>
             <a class="btn btn-warning" onclick="addToCard(${currentProducts[i].id})" >Add To Cart</a>
@@ -62,29 +62,34 @@ function reBuildCardTemp() {
         <div class="card mb-3 bg-dark text-light border-light" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-3">
-                <img src="${cardProducts[i].images[0]
-      }" class="img-fluid rounded-start" alt="...">
+                <img src="${
+                  cardProducts[i].images[0]
+                }" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-9">
                 <div class="card-body">
                 <div class="row">
                 <h5 class="col card-title"> ${cardProducts[i].title}</h5>
-                <button  type="button" onclick="deleteFromCard(${cardProducts[i].id
-      })" class="btn-close btn-close-white col-2" aria-label="Close"></button>
+                <button  type="button" onclick="deleteFromCard(${
+                  cardProducts[i].id
+                })" class="btn-close btn-close-white col-2" aria-label="Close"></button>
             </div>
             <div class="row ">
             <div class="col-8">
                 <span ">count : ${cardProducts[i].count} </span>
                 
             </div>
-                <div class="col-12">Price : ${cardProducts[i].price * cardProducts[i].count
-      } L.E
+                <div class="col-12">Price : ${
+                  cardProducts[i].price * cardProducts[i].count
+                } L.E
                 </div>
                 <div class="row">
-                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="decreaseCount(${cardProducts[i].id
-      })">-</button>
-                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="increaseCount(${cardProducts[i].id
-      })">+</button>
+                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="decreaseCount(${
+                  cardProducts[i].id
+                })">-</button>
+                <button style="width:20%;" type="button" class=" btn btn-warning m-1" onclick="increaseCount(${
+                  cardProducts[i].id
+                })">+</button>
                 </div>
                 </div>
                 </div>
@@ -108,6 +113,13 @@ function reCalculateTotal() {
   }
   // set the total value to html
   totalProducts.innerHTML = total + " L.E";
+}
+
+function openProduct(prID) {
+  //Mohamed Aly task (Done)
+  let currentProduct = getProductById(prID);
+  sessionStorage.setItem("currentProduct", JSON.stringify(currentProduct));
+  window.open("product.html", "_blank");
 }
 
 function getProductById(prID) {
@@ -203,12 +215,12 @@ function decreaseCount(prID) {
   reBuildCardTemp();
 }
 
-
 function onChangeSearchKeyWord(newKeyWord) {
-  currentProducts = products.filter(e => e["title"].toUpperCase().includes(newKeyWord.value.toUpperCase()));
+  currentProducts = products.filter((e) =>
+    e["title"].toUpperCase().includes(newKeyWord.value.toUpperCase())
+  );
   reBuildProductTemp();
 }
-
 
 // setTimeout(() => {
 //   onChangeSearchKeyWord("Ergo");

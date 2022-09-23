@@ -23,78 +23,14 @@
       rel="stylesheet"
     />
   </head>
-  <body style="background-color: #222">
-    <header
-      class=" glass text-light p-3 display-6 text-center mb-5"
-    >
+  <body onload="buildCurrentProduct()" style="background-color: #222">
+    <header class="glass text-light p-3 display-6 text-center mb-5">
       Product Details
     </header>
 
-    <div class="container">
-      <div class="row">
-        <!-- carousel -->
-        <div
-          id="carouselExampleControls"
-          class="carousel slide col-lg-4 "
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="imgs/1.jpg" class="d-block w-100" alt="..." />
-            </div>
-            <div class="carousel-item">
-              <img src="imgs/5.jpg" class="d-block w-100" alt="..." />
-            </div>
-            <div class="carousel-item">
-              <img src="imgs/3.jpg" class="d-block w-100" alt="..." />
-            </div>
-          </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        <!-- Product Info  -->
-        <div class="info text-light col-lg-7">
-          <h2 class=" display-6 text-light mb-4 fw-lighter ">Product Title</h2>
-          <p class="descriptionPara">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi
-            quisquam a, quas fugit neque delectus! Ex illo culpa et impedit quia
-            consequatur minima tempore! Ratione beatae eveniet temporibus
-            cupiditate cumque. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Vel esse dolorem magni autem eos ipsam et enim
-            adipisci odit, fuga sunt quas dolorum asperiores excepturi? Numquam
-            accusantium quidem laudantium repudiandae.
-          </p>
-          <h5 class=" text-light mb-4 fw-lighter">Price : 1000 L.E</h5>
+    <div class="container" id="currentProduct"></div>
 
-
-<!-- Buttons  -->
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-warning me-1">Add To Cart</button>
-            <button type="button" class="btn btn-light me-1">-</button>
-            <button type="button" class="border me-1">count</button>
-            <button type="button" class="btn btn-light me-1">+</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    
+    <script src="script2.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
