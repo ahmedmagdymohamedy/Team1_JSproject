@@ -13,15 +13,15 @@ function buildCurrentProduct() {
       class="carousel slide col-lg-4"
       data-bs-ride="carousel"
     >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="${productInPage.images[0]}" class="d-block w-100" alt="..." />
+      <div class="carousel-inner my-slider">
+        <div class="carousel-item active ">
+          <img src="${productInPage.images[0]}" class="d-block w-100 " alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="${productInPage.images[1]}" class="d-block w-100" alt="..." />
+          <img src="${productInPage.images[1]}" class="d-block w-100 " alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="${productInPage.images[2]}" class="d-block w-100" alt="..." />
+          <img src="${productInPage.images[2]}" class="d-block w-100 " alt="..." />
         </div>
       </div>
       <button
@@ -50,14 +50,6 @@ function buildCurrentProduct() {
       ${productInPage.description}
       </p>
       <h5 class="text-light mb-4 fw-lighter">Price :${productInPage.price}</h5>
-
-      <!-- Buttons  -->
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-warning me-1 onclick="addToCard(${productInPage.id})">Add To Cart</button>
-        <button type="button" class="btn btn-light me-1">-</button>
-        <button type="button" class="border me-1">count</button>
-        <button type="button" class="btn btn-light me-1">+</button>
-      </div>
     </div>
   </div>
         `;

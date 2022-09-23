@@ -11,9 +11,6 @@ body {
   text-align: center;
 }
 
-p {
-  font-size: 12px;
-}
 
 .delete-btn {
   font-size: 34px;
@@ -26,11 +23,11 @@ p {
 }
 
 .glass {
-background: rgba(255, 255, 255, 0.08);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(9px);
--webkit-backdrop-filter: blur(9px);
-border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 
@@ -54,4 +51,40 @@ border: 1px solid rgba(255, 255, 255, 0.09);
 
 .pointer:hover {
   cursor: pointer;
+}
+
+
+.product-card img {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.my-slider img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.product-card h6 {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.product-card p {
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
