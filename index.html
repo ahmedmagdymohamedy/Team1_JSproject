@@ -21,24 +21,20 @@
 
     <!-- Header Start -->
     <header class="bg-light text-dark  text-dark  display-6 text-center  headerPadd" >
-        <ul class="navbar">
-           
-            <button type="button" class="btn btn-warning m-2"><li><a  href="signin.html"> Sign In </a></li></button>
-            <button type="button" class="btn btn-warning m-2"><a href="signup.html"> Sign up </a></li></button>
-            <!-- <li><a href="signin.html"> Sign In </a></li>
-            <li><a href="signup.html"> Sign up </a></li> -->
-        </ul>
-    
     </header>
 
-    <header class="bg-warning text-dark p-3 display-6 text-center  "> Shop Cart</header>
+    <header class="bg-warning text-dark p-2 display-6 "> 
+            <button type="button" class="btn btn-light m-2 float-end"><a class="text-dark"  href="signin.html"> Sign In </a></button>
+            <button type="button" class="btn btn-light m-2 float-end"><a class="text-dark" href="signup.html"> Sign up </a></button>
+            Shop Cart
+    </header>
     <!-- Header End -->
 
     <!-- Category Header  -->
-    <div class="bg-light text-dark opacity-25 row mb-4 p-3 display-6">
+    <div class="bg-light text-dark opacity-25 row mb-4 p-2 display-6">
 
         <div class="col-7 text-center">
-            <span><i class='bx bx-store'></i></span> Products
+            <span><i class='bx bx-store '></i></span> Products
         </div>
         <div class="col-5 text-center">
             <span><i class='bx bx-shopping-bag'></i></span> Carts
@@ -47,7 +43,8 @@
 
     <!-- Products And Carts Start -->
     <div class="container">
-        <input class="search-bar mb-2" type="text" placeholder="Search" onkeyup="onChangeSearchKeyWord(this) ">
+        <input class="search-bar m-2" type="text" placeholder="Search" onkeyup="onChangeSearchKeyWord(this) ">
+
         <div class="row">
             <!-- Products -->
             <div id="products" class="col-9 row">
