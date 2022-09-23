@@ -205,7 +205,7 @@ function deleteFromCard(prID) {
   // Mohamed Ali task (done)
   // delete item from card products.
   for (let i = 0; i < cardProducts.length; i++) {
-    if (cardProducts[i]["id"] == prID) {
+    if (cardProducts[i].id == prID) {
       cardProducts.splice(i, 1);
       break;
     }
