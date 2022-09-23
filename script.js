@@ -29,7 +29,7 @@ function reBuildProductTemp() {
   for (let i = 0; i < currentProducts.length; i++) {
     innerhtml += `
         <div class="card col-4 p-0 bg-dark text-light border border-light flex-center-all m-4 product-card" style="width: 12rem;">
-        <img src="${currentProducts[i].images[0]}" class="card-img-top" alt="product" >
+        <img src="${currentProducts[i].images[0]}" class="card-img-top pointer" alt="product" onclick="openProduct(${currentProducts[i].id})">
         <div class="card-body">
             <h6 class="card-title text-warning pointer" onclick="openProduct(${currentProducts[i].id})">${currentProducts[i].title}</h6>
             <p class="card-text">${currentProducts[i].description}</p>

@@ -44,12 +44,12 @@ function buildCurrentProduct() {
       </button>
     </div>
     <!-- Product Info  -->
-    <div class="info text-light col-lg-7">
+    <div class="info text-light col-lg-8">
       <h2 class="display-6 text-light mb-4 fw-lighter">${productInPage.title}</h2>
       <p class="descriptionPara">
       ${productInPage.description}
       </p>
-      <h5 class="text-light mb-4 fw-lighter">Price :${productInPage.price}</h5>
+      <h5 class="text-light mb-4 fw-lighter">Price :${productInPage.price} L.E</h5>
     </div>
   </div>
         `;
